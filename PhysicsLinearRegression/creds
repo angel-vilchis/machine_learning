@@ -1,1 +1,3 @@
 this is my own take on a linear regression tutorial from a course on Coursera called DeepLearning.AI TensorFlow Developer Professional Certificate
+
+physics kinematics v-t graph at constant acceleration follows a linear model so I thought it'd be cool to try predicting with machine learning's linear regression
