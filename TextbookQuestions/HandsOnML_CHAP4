@@ -1,0 +1,46 @@
+1. Which Linear Regression training algorithm can you use if you have a training set with millions of features?
+A. A closed-form solution such as the normal equation or SVD appraoch doesn't scale well with number of features, gradient descent would be best.
+
+2. Suppose the features in your training set have very different scales. Which algorithms might suffer from this and how? What can you do about it? 
+A. Gradient Descent suffers from this. It will converge more slowly because the 2D gradient would be shaped like an oval rather than a circle.
+
+3. Can Gradient Descent get stuck in local minimum when training a Logistic Regression model? 
+A. No, it can't. The log loss is a convex function.
+
+4. Do all Gradient Descent algorithms lead to the same model, provided you let them run long enough? 
+A. Not necessarily. Let's say there are local minimums. It is more likely for Batch Gradient Descent to get stuck at a local minimum
+   than Stochastic Gradient Descent. SGD has a randomness to it that would allow it to be able to bounce out of a local minimum. Furthermore, SGD and Mini-Batch will
+   never really reach global minimum but bounce around it. 
+   
+5. Suppose you use Batch Gradient Descent and you plot the validation error at every epoch. If you notice that the validation error consistently goes up, what is likely
+   going on? How can you fix this? 
+A. If validation error is consistently going up, the model is likely overfitting the training set. However if the training set error is also going up, then the gradient 
+   descent learning rate is too high and is likely diverging. Reduce learning rate.
+
+6. Is it a good idea to stop Mini-batch Gradient Descent immediately when the validation error goes up? 
+A. It is not. This technique is used for BGD. But for SGD and Mini-batch, it is discouraged since sometimes error bounces up and down, stopping when validation error goes up
+   can lead to a model that hasn't almost converged. Instead, the "best" model can be tracked, once progress is not made, we can revert back to the model. 
+
+7. Which Gradient Descent algorithm will reach the vicinity of the optimal solution the fastest? Which will actually converge? How can you make the others converge as well? 
+A. SGD will reach the vicinity of the optimal solution the fastest since it takes one instance at a time. BGD is the only one that will actually converge. 
+   The others can be aided in converging by gradually reducing the learning rate after each step.
+   
+8. Suppose you are using Polynomial Regression. You plot the learning curves and you notice there is a large gap between the training error and the validation error. What is
+   happening? What are three ways to solve this? 
+A. The model is likely overfitting. The three ways to solve this would be to add L2/L1 regularization, increase training set size, or limit degrees of freedom.
+
+9. Suppose you are using Ridge Regression and you notice that the training error and the validation error are almost equal and fairly high. Would you say that the model 
+   suffers from high bias or high variance? Should you increase the regularization hyperparameter, alpha, or decrease it? 
+A. High variance usually leads to overfitting. But if they are almost equal and fairly high this means the model is not good for either set which means there is high bias.
+   alpha should be decreased. 
+
+10. Why would you want to use:
+    1) Ridge Regression instead of Linear Regression?
+       A. Ridge Regression should be used instead of Linear Regression to reduce overfitting. 
+    2) Lasso intead of Ridge Regression?
+       A. Lasso should be used instead of Ridge Regression to eliminate irrelevant features. 
+    3) Elastic Net instead of Lasso? 
+       A. Elastic Net should be used instead of Lasso whenever there are more features than training instances or features are highly correlated. 
+
+11. Suppose you want to classify pictures as outdoor/indoor and daytime/nighttime. Should you implement two Logistic Regression classifiers or one Softmax Regression classifier?
+ A. Two logistic regression classifiers since the class of one suggests not the class of another; binary. There aren't 4 seperate classes. Only 2 binary classifications. 
